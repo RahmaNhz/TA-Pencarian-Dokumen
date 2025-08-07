@@ -1,0 +1,42 @@
+[
+    {
+        "query": "prabowo",
+        "model": "model-skipgramstr(100-3-0.01)",
+        "dokumen_relevan": [
+            "1068",
+            "1033",
+            "801",
+            "802",
+            "1019",
+            "1042",
+            "1021",
+            "1023"
+        ],
+        "dokumen_tidak_relevan": [
+            "938",
+            "6"
+        ],
+        "total_relevan": 8,
+        "total_tidak_relevan": 2
+    },
+    {
+        "query": "prabowo",
+        "model": "model-skipgram-nostr(100-3-0.001)",
+        "dokumen_relevan": [
+            "1451",
+            "1043",
+            "801",
+            "1193",
+            "1306",
+            "1113",
+            "341",
+            "132",
+            "301"
+        ],
+        "dokumen_tidak_relevan": [
+            "802"
+        ],
+        "total_relevan": 9,
+        "total_tidak_relevan": 1
+    }
+]
