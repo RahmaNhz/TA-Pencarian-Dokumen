@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Relevansi</title>
+    <style>
+        body { display: flex; font-family: Arial, sans-serif; margin: 0; }
+        .sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        .button {
+            padding: 6px 12px;
+            font-size: 13px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+        }
+
+        .btn-hapus {
+            background-color: #e74c3c; /* merah */
+        }
+
+        .btn-edit {
+            background-color: #3498db; /* biru */
+        }
+
+        .btn-hapus:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-edit:hover {
+            background-color: #2980b9;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>📂 Pencarian Berita</h2>
+        <a href="{{ url_for('index') }}" class="button" style="background:#444;">🔍 Pencarian</a>
+    </div>
+    <div class="main">
+        <h1>📊 Data Penilaian Relevansi</h1>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Query</th>
+                <th>Model</th>
+                <th>Dok Relevan</th>
+                <th>Dok Tidak Relevan</th>
+                <th>Total Relevan</th>
+                <th>Total Tidak Relevan</th>
+                <th>Aksi</th>
+            </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ item.query }}</td>
+                <td>{{ item.model }}</td>
+                <td>{{ item.dokumen_relevan | join(', ') }}</td>
+                <td>{{ item.dokumen_tidak_relevan | join(', ') }}</td>
+                <td>{{ item.total_relevan }}</td>
+                <td>{{ item.total_tidak_relevan }}</td>
+                <td>
+                    <div class="button-container"></div>
+                         <a href="{{ url_for('hapus_relevansi', index=loop.index0) }}" class="button btn-hapus">Hapus</a>
+                    </div>
+                </td> 
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+
